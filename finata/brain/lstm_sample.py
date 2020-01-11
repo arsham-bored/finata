@@ -38,7 +38,7 @@ def simple_lstm_model ( x_train, y_train, **arg ) -> None:
           write_graph=True, write_images=True)
 
     model.compile( loss=loss, optimizer=optimizer, metrice=['accuracy'] )
-    history = model.fit(y_train, x_train, epochs=epochs, validate)
+    history = model.fit(y_train, x_train, epochs=epochs)
 
     model.summary()
 
