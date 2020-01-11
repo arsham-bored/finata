@@ -16,18 +16,20 @@ def simple_lstm_model ( x_train, y_train, **arg ) -> None:
     #model = layers.Dense(model)
 
     from tensorflow.keras.models import Sequential
-    from tensorflow.keras.layers import LSTM, Dropout, Dense, Bidirectional
+    from tensorflow.keras.layers import LSTM, Dropout, Dense, Bidirectional, Dropout
 
     model = Sequential([
-        Bidirectional(LSTM(100, return_sequences=True, input_shape=(10, 1), activation='relu')),
-        Bidirectional(LSTM(50, return_sequences=True, activation='relu')),
+        Bidirectional(LSTM(40, return_sequences=True, input_shape=(10, 1), activation='relu')),
+        Dropout(0.5),
         Bidirectional(LSTM(25, return_sequences=False, activation='relu')),
-        Dense(100, activation='relu'),
-        Dense(50, activation='relu'),
+        Dropout(0.5),
         Dense(25, activation='relu'),
+        Dropout(0.2),
         Dense(10, activation='relu'),
         Dense(1, activation='softmax')
     ])
+
+    print(model.summary())
 
     # compile, fit, validate
     log_dir = arg['log_dir']
