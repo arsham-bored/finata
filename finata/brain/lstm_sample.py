@@ -40,7 +40,7 @@ def simple_lstm_model ( x_train, y_train, **arg ) -> None:
     model.compile( loss=loss, optimizer=optimizer, metrice=['accuracy'] )
     history = model.fit(y_train, x_train, epochs=epochs)
 
-    model.summary()
+    #model.summary()
 
     # save mode
     model.save(save_to)
