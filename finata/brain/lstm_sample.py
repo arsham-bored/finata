@@ -29,8 +29,6 @@ def simple_lstm_model ( x_train, y_train, **arg ) -> None:
         Dense(1, activation='softmax')
     ])
 
-    print(model.summary())
-
     # compile, fit, validate
     log_dir = arg['log_dir']
     save_to = arg['save_to']
@@ -41,6 +39,8 @@ def simple_lstm_model ( x_train, y_train, **arg ) -> None:
 
     model.compile( loss=loss, optimizer=optimizer, metrice=['accuracy'] )
     history = model.fit(y_train, x_train, epochs=epochs, validate)
+
+    model.summary()
 
     # save mode
     model.save(save_to)
